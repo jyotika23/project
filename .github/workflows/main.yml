@@ -1,0 +1,47 @@
+# name: pushaction
+ 
+# # Controls
+
+# on:
+
+#   push:
+#     branches: [ "main"]
+
+#   pull_request:
+
+#     branches: [ "main"]
+  
+#   workflow_disptach:
+
+# jobs:
+#   build:
+#     runs-on:ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Run a one-line script
+#        run: echo Hello, world!
+
+name: GITACTION
+ 
+on:
+  push:
+     branches: [ "main"]
+  pull_request:
+   branches: [ "main"]
+ 
+  workflow_dispatch:
+    inputs:
+      environment: 
+        description: 'Env'
+        type: string
+        required: True
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/setup-node@v3.9.1
+     - name: Setup Node.js environment
+       run: Test action
+       
+  
+ 
