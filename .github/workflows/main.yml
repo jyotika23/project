@@ -24,18 +24,9 @@
 name: GITACTION
  
 on:
-  push:
-     branches: [ "main"]
-  pull_request:
-   branches: [ "main"]
  
   workflow_dispatch:
-    inputs:
-      environment: 
-        description: 'Env'
-        type: string
-        required: true
-        # default: 'production' 
+   
 jobs:
   build:
     runs-on: ubuntu-latest
