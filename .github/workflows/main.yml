@@ -1,51 +1,19 @@
-# name: pushaction
+name: Comment on PR
  
-# # Controls
-
-# on:
-
-#   push:
-#     branches: [ "main"]
-
-#   pull_request:
-
-#     branches: [ "main"]
-  
-#   workflow_disptach:
-
-# jobs:
-#   build:
-#     runs-on:ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-#       - name: Run a one-line script
-#        run: echo Hello, world!
-
-name: GITACTION
- 
+# Controls
 on:
+  pull_request:
+    types: [opened, synchronize]
  
-  workflow_dispatch:
-   
+#Jobs
 jobs:
-  build:
+  commentjob:
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v4
-     - name: Run a one-line script
-       run: |
-        git config --global user.email "jjyotikareddy@gmail.com"
-        git config --global user.name "jyotika23"
+      - name: comment on PR
+        env: 
+          GITHUB_TOKEN: ${{ secrets.gittoken }}
         run: |
-          git checkout -B feature421
-        echo "New Changes" >> changes.txt
-        git add changes.txt
-        git commit -m "Add changes"
-     - name: Push Changes
-       env:
-            GITHUB_TOKEN: ${{secrets.gittoken}}
-       run: |
-            git push origin main
-
-  
- 
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
+          -d '{"body": "Thank you for your contribution!"}' \https://api.github.com/repos/jyotika23/project/issues/$PR_NUMBER/comments
