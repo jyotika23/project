@@ -35,14 +35,17 @@ on:
         description: 'Env'
         type: string
         required: true
-        default: 'production' 
+        # default: 'production' 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v4
      - name: Run a one-line script
-       run: echo ${{inputs.environment}}
+       env:
+         GITHUB_TOKEN: ${{secrets.gittoken}}
+       run: |
+        curl -H "Authorization: token $GITHUB_TOKEN" https:api.github.com/user
    
   
  
