@@ -36,7 +36,7 @@ jobs:
        env:
          GITHUB_TOKEN: ${{secrets.gittoken}}
        run: |
-        git config --global user.email "jeerujyotika.reddy@providence.org"
+        git config --global user.email "jjyotikareddy@gmail.com"
         git config --global user.name "jyotika23"
         echo "New Changes" >> changes.txt
         git add changes.txt
