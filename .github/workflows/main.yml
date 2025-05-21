@@ -33,8 +33,6 @@ jobs:
     steps:
      - uses: actions/checkout@v4
      - name: Run a one-line script
-       env:
-         GITHUB_TOKEN: ${{secrets.gittoken}}
        run: |
         git config --global user.email "jjyotikareddy@gmail.com"
         git config --global user.name "jyotika23"
