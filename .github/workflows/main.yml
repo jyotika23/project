@@ -10,10 +10,19 @@ jobs:
   commentjob:
     runs-on: ubuntu-latest
     steps:
-      - name: comment on PR
-        env: 
-          GITHUB_TOKEN: ${{ secrets.gittoken }}
+      - name: checkout this repo
+        uses: action/checkout@v2
+      - name: Checkout another repository
+        uses: actions/checkout@v2
+        with:
+          repository: pythonproject
+          token: ${{secrets.gittoken}}
+          path: script.py
+      - name:  Set up Python
+        uses: actions/setup-python@v2
+        with:
+           python-version: '3.x'
+      - name: Run Python script
         run: |
-          PR_NUMBER=${{ github.event.pull_request.number }}
-          curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
-          -d '{"body": "Thank you for your contribution!"}' \https://api.github.com/repos/jyotika23/project/issues/$PR_NUMBER/comments
+          cd script.py
+          python script.py
