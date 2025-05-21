@@ -45,7 +45,18 @@ jobs:
        env:
          GITHUB_TOKEN: ${{secrets.gittoken}}
        run: |
-        curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user
+        git config --global user.email "jeerujyotika.reddy@providence.org"
+        git config --global user.name "Jyotika Reddy"
+        cd project
+        git checkout featuretest
+        echo "New Changes" >> changes.txt
+        git add changes.txt
+        git commit -m "Add changes"
+     - name: Push Changes
+       env:
+            GITHUB_TOKEN: ${{secrets.gittoken}}
+       run: |
+            git push origin featuretest
    
   
  
