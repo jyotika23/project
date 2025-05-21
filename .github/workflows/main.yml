@@ -34,7 +34,7 @@ on:
       environment: 
         description: 'Env'
         type: string
-        required: True
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
