@@ -24,18 +24,9 @@
 name: GITACTION
  
 on:
-  push:
-     branches: [ "main"]
-  pull_request:
-   branches: [ "main"]
  
   workflow_dispatch:
-    inputs:
-      environment: 
-        description: 'Env'
-        type: string
-        required: true
-        # default: 'production' 
+   
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,9 +34,8 @@ jobs:
      - uses: actions/checkout@v4
      - name: Run a one-line script
        run: |
-        git config --global user.email "jeerujyotika.reddy@providence.org"
+        git config --global user.email "jjyotikareddy@gmail.com"
         git config --global user.name "jyotika23"
-        git checkout featuretest
         echo "New Changes" >> changes.txt
         git add changes.txt
         git commit -m "Add changes"
