@@ -36,6 +36,8 @@ jobs:
        run: |
         git config --global user.email "jjyotikareddy@gmail.com"
         git config --global user.name "jyotika23"
+        run: |
+          git checkout -B feature421
         echo "New Changes" >> changes.txt
         git add changes.txt
         git commit -m "Add changes"
@@ -44,6 +46,6 @@ jobs:
             GITHUB_TOKEN: ${{secrets.gittoken}}
        run: |
             git push origin main
-   
+
   
  
